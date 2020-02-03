@@ -15,36 +15,35 @@ import {
     EditRecurrenceMenu,
     AllDayPanel,
     ConfirmationDialog,
-    
+    Resources,
+
 } from '@devexpress/dx-react-scheduler-material-ui';
 
-const CustomAppointment = ({ style, ...restProps }) => {
-    if (restProps.data.location === "Room 1")
-        return (
-            <Appointments.Appointment
-                {...restProps}
-                style={{ ...style, backgroundColor: "blue" }}
-                className="CLASS_ROOM1"
-                data={restProps.data.location}
+const messagesAppointmentForm = {
+    moreInformationLabel: '',
+    detailsLabel:"Título",
+    allDayLabel:"Dia todo",
+    repeatLabel:"Repetir",
 
-            />
-        );
-    if (restProps.data.location === "Room 2")
-        return (
-            <Appointments.Appointment
-                {...restProps}
-                style={{ ...style, backgroundColor: "green" }}
-                className="CLASS_ROOM2"
-            />
-        );
-    return (
-        <Appointments.Appointment
-            {...restProps}
-            style={style}
-            className="CLASS_ROOM3"
-        />
-    );
-};
+}
+
+const TextEditor = (props) => {
+    if (props.type === "multilineTextEditor"){
+        return null;
+    } return <AppointmentForm.TextEditor {...props}/>
+}
+
+function findArrayElementByTitle(array, title) {
+    let name = (array) = array.find((element) => {
+        if (element.id == title) {
+            return element
+        }
+    })
+    if (name != null){
+        return name.text;
+    }
+    return "";
+}
 
 const AppointmentContent = ({ style, ...restProps }) => {
     return (
@@ -54,39 +53,117 @@ const AppointmentContent = ({ style, ...restProps }) => {
                 <div>{restProps.data.location}</div>
                 <div>{restProps.data.startDate.getHours()}:{restProps.data.startDate.getMinutes()} - {restProps.data.endDate.getHours()}:{restProps.data.endDate.getMinutes()}</div>
                 <div>Paciente : {restProps.data.paciente}</div>
-                <div>Profissional : {restProps.data.profissional}</div>
+                {/* <div>Profissional : {restProps.data.profissional}</div> */}
+                {/* <div>Paciente : {findArrayElementByTitle(paciente, restProps.data.pacienteId)}</div> */}
+                <div>Profissional : {findArrayElementByTitle(profissional, restProps.data.profissionalId)}</div>
+                
             </div>
         </Appointments.AppointmentContent>
     );
 };
 
-const AppointmentContentForm = ({ ...restProps }) => {
+const basicLayout = ({ onFieldChange, appointmentData, ...restProps }) => {
+    const onPacienteFieldChange = (nextValue) => {
+        onFieldChange({ paciente: nextValue });
+    }
+
+    const onProfissionalFieldChange = (nextValue) => {
+        onFieldChange({ profissionalId: nextValue });
+    }
+
+
     return (
-        <AppointmentForm.BasicLayout {...restProps}>
-            {console.log(restProps)}
-            {/* <div className={restProps.container}> */}
-    <div>{restProps.appointmentData[0].paciente}</div>
-
-                {/* <div>{restProps.data.title}</div>
-                <div>{restProps.data.location}</div>
-                <div>{restProps.data.startDate.getHours()}:{restProps.data.startDate.getMinutes()} - {restProps.data.endDate.getHours()}:{restProps.data.endDate.getMinutes()}</div>
-                <div>Paciente : {restProps.data.paciente}</div>
-                <div>Profissional : {restProps.data.profissional}</div> */}
-            {/* </div> */}
+        <AppointmentForm.BasicLayout
+            appointmentData={appointmentData}
+            onFieldChange={onFieldChange}
+            {...restProps}>
+            <AppointmentForm.Label
+                text="Paciente"
+                type="title" />
+            <AppointmentForm.TextEditor
+                value={appointmentData.paciente}
+                onValueChange={onPacienteFieldChange}
+                placeholder="Paciente" />
+            
+            <AppointmentForm.Label
+                text="Profissional"
+                type="title" />
+            <AppointmentForm.Select
+                value = {appointmentData.profissionalId}
+                onValueChange = {onProfissionalFieldChange}
+                availableOptions = {profissional}
+                type = "outlinedSelect"
+            />
         </AppointmentForm.BasicLayout>
-    );
-};
+    )
+}
 
+export const paciente = [
+    {
+        text: 'Samantha Bright',
+        id: 1,
+        color: '#727bd2'
+    }, {
+        text: 'John Heart',
+        id: 2,
+        color: '#32c9ed'
+    }, {
+        text: 'Todd Hoffman',
+        id: 3,
+        color: '#2a7ee4'
+    }, {
+        text: 'Sandra Johnson',
+        id: 4,
+        color: '#7b49d3'
+    }
+];
 
+export const profissional = [
+    {
+        text: 'Zé',
+        id: 1,
+        color: '#727bd2'
+    }, {
+        text: 'José',
+        id: 2,
+        color: '#32c9ed'
+    }, {
+        text: 'Bruno',
+        id: 3,
+        color: '#2a7ee4'
+    }, {
+        text: 'Weber',
+        id: 4,
+        color: '#7b49d3'
+    }
+];
+
+export const rooms = [
+    {
+        text: 'Room 1',
+        id: 1,
+        color: '#00af2c'
+    }, {
+        text: 'Room 2',
+        id: 2,
+        color: '#56ca85'
+    }, {
+        text: 'Room 3',
+        id: 3,
+        color: '#8ecd3c'
+    }
+];
 export const appointments = [
     {
         title: "Teste",
-        startDate: new Date(2020, 0, 31, 9, 30),
-        endDate: new Date(2020, 0, 31, 11, 30),
+        startDate: new Date(2020, 1, 2, 9, 30),
+        endDate: new Date(2020, 1, 2, 11, 30),
         id: 0,
-        location: "Room 1",
-        paciente: "Fulano",
-        profissional: "Ciclano"
+        locationId: 1,
+        pacienteId: 1,
+        profissionalId: 1,
+        profissional: "Bruno Weber",
+        paciente: "Luan da Silva",
     },
 ]
 var today = new Date();
@@ -103,6 +180,24 @@ export default class Agenda extends React.PureComponent {
             editingAppointmentId: undefined,
 
             locale: 'pt-BR',
+
+            resources: [
+                {
+                    fieldName: 'locationId',
+                    title: 'Room',
+                    instances: rooms,
+                },
+                {
+                    fieldName: 'profissionalId',
+                    title: 'Profissional',
+                    instances: profissional,
+                },
+                {
+                    fieldName: 'pacienteId',
+                    title: 'Paciente',
+                    instances: paciente,
+                },
+            ],
         };
 
         this.commitChanges = this.commitChanges.bind(this);
@@ -145,7 +240,7 @@ export default class Agenda extends React.PureComponent {
 
     render() {
         const {
-            currentDate, data,
+            currentDate, data, resources,
 
             addedAppointment, appointmentChanges, editingAppointmentId,
 
@@ -156,7 +251,7 @@ export default class Agenda extends React.PureComponent {
             <Paper>
                 <Scheduler
                     data={data}
-                    height={660}
+                    height={700}
                     locale={locale}
                 >
                     <ViewState
@@ -176,6 +271,7 @@ export default class Agenda extends React.PureComponent {
                         editingAppointmentId={editingAppointmentId}
                         onEditingAppointmentIdChange={this.changeEditingAppointmentId}
                     />
+                    <EditRecurrenceMenu />
                     <DayView
                         startDayHour={8}
                         endDayHour={18}
@@ -193,7 +289,7 @@ export default class Agenda extends React.PureComponent {
                         messages={{ today: "Hoje" }} />
                     <AllDayPanel
                         messages={{ allDay: 'Dia todo' }} />
-                    <EditRecurrenceMenu />
+                    {/* <EditRecurrenceMenu /> */}
                     <ConfirmationDialog
                         messages={{
                             confirmDeleteMessage: "Você gostaria mesmo de deletar esse agendamento?",
@@ -205,19 +301,23 @@ export default class Agenda extends React.PureComponent {
                     <Appointments
                         // appointmentComponent={CustomAppointment}
                         appointmentContentComponent={AppointmentContent}
+
                     />
                     <AppointmentTooltip
                         showOpenButton
                         showDeleteButton
-                        // contentComponent = {CustomAppointment}
+                    />
+                    <AppointmentForm
+                        basicLayoutComponent={basicLayout}
+                    textEditorComponent = {TextEditor}
+                    messages = {messagesAppointmentForm}
 
                     />
-                    <AppointmentForm 
-                    appointmentData = {this.state.data}
-                    basicLayoutComponent = {AppointmentContentForm}
-                    // textEditorComponent = {null}
-                    // appointmentContentForm = {AppointmentContentForm}
-                    />
+
+                    {/* <Resources
+                        data={resources}
+                        mainResourceName="profissionalId"
+                    /> */}
                 </Scheduler>
             </Paper>
 

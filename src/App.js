@@ -37,10 +37,7 @@ const AuthPage = (props) => (
       <Redirect to={'/home'} />
     </Switch>
     <Footer>
-      Copyright © 2011-2020 Developer Express Inc.
-      <br />
-      All trademarks or registered trademarks are property of their
-      respective owners.
+      teste
     </Footer>
   </SideNavBarLayout>
 );

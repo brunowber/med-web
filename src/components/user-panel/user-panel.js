@@ -12,7 +12,7 @@ export default class UserPanel extends React.Component {
           <div className={'image-container'}>
             <div className={'user-image'} />
           </div>
-          <div className={'user-name'}>Sandra Johnson</div>
+          <div className={'user-name'}>User Name</div>
         </div>
 
         {menuMode === 'context' && (
