@@ -1,4 +1,4 @@
-import { HomePage, DisplayDataPage, Agenda } from './pages';
+import { HomePage, DisplayDataPage, Agenda, Campanha } from './pages';
 
 export default [
   {
@@ -8,6 +8,10 @@ export default [
   {
     path: '/agenda',
     component: Agenda
+  },
+  {
+    path: '/campanha',
+    component: Campanha
   },
   {
     path: '/home',

@@ -13,6 +13,10 @@ export const navigation = [
         path: '/agenda'
       },
       {
+        text: 'Campanha',
+        path: '/campanha'
+      },
+      {
         text: 'Display Data',
         path: '/display-data'
       }
