@@ -9,11 +9,16 @@ import { generateData } from './dataDiasCampanha.js';
 
 import Bullet, { Font, Margin, Size, Tooltip, Border } from 'devextreme-react/bullet';
 
+import Chart, {
+  Export
+} from 'devextreme-react/chart';
 
+import PrintButton from 'devextreme-react/button';
+import ExportButton from 'devextreme-react/button';
 
 let dataSource = generateData(6);
 
-function progressoCampanha(cellData) {
+function progresso(cellData) {
   return (
     <Bullet
       showTarget={false}
@@ -47,6 +52,7 @@ return {
    
   constructor(props) {
     super(props);
+    this.metaCampanha = this.meta
   }
 
   render() {
@@ -58,19 +64,26 @@ return {
         customizeColumns={customizeColumns}
         onContentReady={this.onContentReady}
       > 
-        <Column dataField="dia" customizeColumns={customizeColumns} caption="Meio de Divulgação" allowGrouping={true} />
-        <Column dataField="meta" dataSource={parseFloat(this.props.meta)/6} customizeColumns={customizeColumns} caption="Meta" allowGrouping={true} />
-        <Column dataField="duracao" customizeColumns={customizeColumns}  caption="Duração (Dias)" allowGrouping={true} />
+        <Column dataField="dia" customizeColumns={customizeColumns} caption="Dia (útil)" allowGrouping={true} />
+        <Column dataField="meta"  customizeColumns={customizeColumns} caption="Meta" allowGrouping={true} />
+        <Column dataField="contato"  customizeColumns={customizeColumns} caption="Contatos" allowGrouping={true} />
+        <Column dataField="agenda"  customizeColumns={customizeColumns} caption="Agendamentos" allowGrouping={true} />
+        <Column dataField="proposta"  customizeColumns={customizeColumns} caption="Propostas" allowGrouping={true} />
+        <Column dataField="fechados"  customizeColumns={customizeColumns} caption="Fechados" allowGrouping={true} />
         <Column
-          dataField="progressoCampanha"
+          dataField="progresso"
           caption="Progresso"
           dataType="number"
           format="percent"
           alignment="center"
           allowGrouping={true}
-          cellRender={progressoCampanha}
+          cellRender={progresso}
           cssClass="bullet"
-        /> 
+        />
+        <Export
+            enabled={true}
+            printingEnabled={false}
+          />
         <Sorting mode="none" />
         <Scrolling mode="infinite" />
         <LoadPanel enabled={false} />
@@ -80,5 +93,5 @@ return {
 }
 
 function customizeColumns(columns) {
-  columns[0].width = 200;
+  columns[0].width = 130;
 }

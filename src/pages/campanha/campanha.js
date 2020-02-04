@@ -8,11 +8,18 @@ import DataGrid, {
   Grouping,
   GroupPanel,
   MasterDetail,
+  Selection,
   SearchPanel} from 'devextreme-react/data-grid';
-import { generateData } from './data.js';
+
+  import { generateData } from './data.js';
 
 import Bullet, { Font, Margin, Size, Tooltip, Border } from 'devextreme-react/bullet';
+
 import DiasCampanha from './diasCampanha/diasCampanha.js';
+
+import Chart, {
+  Export
+} from 'devextreme-react/chart';
 
 let dataSource = generateData(100000);
 
@@ -54,46 +61,50 @@ return {
   }
   render() {
     return (
-      <DataGrid
-        id="grid-container"
-        dataSource={dataSource}
-        onSelectionChanged={this.selectionChanged}
-        onContentReady={this.contentReady}
-        showBorders={true}
-        allowColumnReordering={true}
-        customizeColumns={customizeColumns}
-      > 
-        <Column dataField="meio" customizeColumns={customizeColumns} caption="Meio de Divulgação" allowGrouping={true} />
-        <Column dataField="meta" customizeColumns={customizeColumns} caption="Meta" allowGrouping={true} />
-        <Column dataField="duracao" customizeColumns={customizeColumns}  caption="Duração (Dias)" allowGrouping={true} />
-        <Column
-          dataField="discount"
-          caption="Progresso"
-          dataType="number"
-          format="percent"
-          alignment="center"
-          allowGrouping={true}
-          cellRender={progressoCampanha}
-          cssClass="bullet"
-        /> 
-        <MasterDetail enabled={false} render={renderDetail} />
-         <GroupPanel visible={true} />
-         <SearchPanel visible={true} highlightCaseSensitive={true} />
-         <Grouping autoExpandAll={false} />
-        <Sorting mode="none" />
-        <Scrolling mode="infinite" />
-        <LoadPanel enabled={false} />
-      </DataGrid>
+      <div className="conteudo">
+        <DataGrid
+          id="grid-container"
+          dataSource={dataSource}
+          onSelectionChanged={this.selectionChanged}
+          onContentReady={this.contentReady}
+          showBorders={true}
+          allowColumnReordering={true}
+          customizeColumns={customizeColumns}
+        > 
+          <Selection mode="single" />
+          <Column dataField="meio" customizeColumns={customizeColumns} caption="Meio de Divulgação" allowGrouping={true} />
+          <Column dataField="meta" customizeColumns={customizeColumns} caption="Meta" allowGrouping={true} />
+          <Column dataField="duracao" customizeColumns={customizeColumns}  caption="Duração (Dias)" allowGrouping={true} />
+          <Column
+            dataField="discount"
+            caption="Progresso"
+            dataType="number"
+            format="percent"
+            alignment="center"
+            allowGrouping={true}
+            cellRender={progressoCampanha}
+            cssClass="bullet"
+          /> 
+          <MasterDetail enabled={false} render={renderDetail} />
+          <GroupPanel visible={true} />
+          <Export
+            enabled={true}
+            printingEnabled={false}
+          />
+          <SearchPanel visible={true} highlightCaseSensitive={true} />
+          <Grouping autoExpandAll={false} />
+          <Sorting mode="none" />
+          <Scrolling mode="infinite" />
+          <LoadPanel enabled={false} />
+        </DataGrid>
+      </div>
     );
   }
-  
   contentReady(e) {
-    this.meta = e.component.getSelectedRowKeys().value;
     if (!e.component.getSelectedRowKeys().length)
     { e.component.selectRowsByIndexes(0); }
   }
   selectionChanged(e) {
-    this.meta = e.component.getSelectedRowKeys().value;
     e.component.collapseAll(-1);
     e.component.expandRow(e.currentSelectedRowKeys[0]);
   }
@@ -101,11 +112,9 @@ return {
 
 function renderDetail(props) {
   return (
-    <DiasCampanha meta='500' />
+    <DiasCampanha meta="200"/>
   );
 }
-
-
 
 function customizeColumns(columns) {
   columns[0].width = 200;
