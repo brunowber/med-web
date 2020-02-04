@@ -74,7 +74,6 @@ return {
          <GroupPanel visible={true} />
          <SearchPanel visible={true} highlightCaseSensitive={true} />
          <Grouping autoExpandAll={false} />
-         
         <Sorting mode="none" />
         <Scrolling mode="infinite" />
         <LoadPanel enabled={false} />
