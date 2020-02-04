@@ -93,6 +93,7 @@ return {
     { e.component.selectRowsByIndexes(0); }
   }
   selectionChanged(e) {
+    this.meta = e.component.getSelectedRowKeys().value;
     e.component.collapseAll(-1);
     e.component.expandRow(e.currentSelectedRowKeys[0]);
   }
@@ -100,9 +101,11 @@ return {
 
 function renderDetail(props) {
   return (
-    <DiasCampanha meta={this.props.meta} />
+    <DiasCampanha meta='5000' />
   );
 }
+
+
 
 function customizeColumns(columns) {
   columns[0].width = 200;

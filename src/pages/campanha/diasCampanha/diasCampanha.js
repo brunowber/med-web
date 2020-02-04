@@ -47,7 +47,6 @@ return {
    
   constructor(props) {
     super(props);
-    this.props.metaCampanha = this.props.meta;
   }
 
   render() {
