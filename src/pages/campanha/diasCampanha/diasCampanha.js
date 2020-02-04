@@ -43,9 +43,13 @@ return {
 };
 }
 
- export default class DiasCampanha extends React.Component {
-  
-  
+ export default class DiasCampanha extends React.Component{
+   
+  constructor(props) {
+    super(props);
+    this.props.metaCampanha = this.props.meta;
+  }
+
   render() {
     return (
       <DataGrid
@@ -55,8 +59,8 @@ return {
         customizeColumns={customizeColumns}
         onContentReady={this.onContentReady}
       > 
-        <Column dataField="meio" customizeColumns={customizeColumns} caption="Meio de Divulgação" allowGrouping={true} />
-        <Column dataField="meta" customizeColumns={customizeColumns} caption="Meta" allowGrouping={true} />
+        <Column dataField="dia" customizeColumns={customizeColumns} caption="Meio de Divulgação" allowGrouping={true} />
+        <Column dataField="meta" dataSource={parseFloat(this.props.meta)/6} customizeColumns={customizeColumns} caption="Meta" allowGrouping={true} />
         <Column dataField="duracao" customizeColumns={customizeColumns}  caption="Duração (Dias)" allowGrouping={true} />
         <Column
           dataField="discount"

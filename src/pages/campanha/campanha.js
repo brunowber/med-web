@@ -88,6 +88,7 @@ return {
   }
   
   contentReady(e) {
+    this.meta = e.component.getSelectedRowKeys().value;
     if (!e.component.getSelectedRowKeys().length)
     { e.component.selectRowsByIndexes(0); }
   }
@@ -99,7 +100,7 @@ return {
 
 function renderDetail(props) {
   return (
-    <DiasCampanha />
+    <DiasCampanha meta={this.props.meta} />
   );
 }
 
