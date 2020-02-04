@@ -4,17 +4,14 @@ import DataGrid, {
   Scrolling, 
   Sorting, 
   LoadPanel, 
-  Column,
-  Grouping,
-  GroupPanel,
-  MasterDetail,
-  SearchPanel} from 'devextreme-react/data-grid';
-import { generateData } from './data.js';
+  Column} from 'devextreme-react/data-grid';
+import { generateData } from './dataDiasCampanha.js';
 
 import Bullet, { Font, Margin, Size, Tooltip, Border } from 'devextreme-react/bullet';
-import DiasCampanha from './diasCampanha/diasCampanha.js';
 
-let dataSource = generateData(100000);
+
+
+let dataSource = generateData(6);
 
 function progressoCampanha(cellData) {
   return (
@@ -46,22 +43,17 @@ return {
 };
 }
 
- export default class Campanha extends React.Component {
-  constructor(props) {
-    super(props);
-    this.contentReady = this.contentReady.bind(this);
-    this.selectionChanged = this.selectionChanged.bind(this);
-  }
+ export default class DiasCampanha extends React.Component {
+  
+  
   render() {
     return (
       <DataGrid
-        id="grid-container"
         dataSource={dataSource}
-        onSelectionChanged={this.selectionChanged}
-        onContentReady={this.contentReady}
         showBorders={true}
         allowColumnReordering={true}
         customizeColumns={customizeColumns}
+        onContentReady={this.onContentReady}
       > 
         <Column dataField="meio" customizeColumns={customizeColumns} caption="Meio de Divulgação" allowGrouping={true} />
         <Column dataField="meta" customizeColumns={customizeColumns} caption="Meta" allowGrouping={true} />
@@ -76,31 +68,12 @@ return {
           cellRender={progressoCampanha}
           cssClass="bullet"
         /> 
-        <MasterDetail enabled={false} render={renderDetail} />
-         <GroupPanel visible={true} />
-         <SearchPanel visible={true} highlightCaseSensitive={true} />
-         <Grouping autoExpandAll={false} />
         <Sorting mode="none" />
         <Scrolling mode="infinite" />
         <LoadPanel enabled={false} />
       </DataGrid>
     );
   }
-  
-  contentReady(e) {
-    if (!e.component.getSelectedRowKeys().length)
-    { e.component.selectRowsByIndexes(0); }
-  }
-  selectionChanged(e) {
-    e.component.collapseAll(-1);
-    e.component.expandRow(e.currentSelectedRowKeys[0]);
-  }
-}
-
-function renderDetail(props) {
-  return (
-    <DiasCampanha />
-  );
 }
 
 function customizeColumns(columns) {
