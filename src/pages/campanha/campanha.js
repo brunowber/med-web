@@ -101,7 +101,7 @@ return {
 
 function renderDetail(props) {
   return (
-    <DiasCampanha meta='5000' />
+    <DiasCampanha meta='500' />
   );
 }
 

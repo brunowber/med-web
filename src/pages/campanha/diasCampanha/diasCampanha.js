@@ -58,7 +58,7 @@ return {
         customizeColumns={customizeColumns}
         onContentReady={this.onContentReady}
       > 
-        <Column dataField="dia" customizeColumns={customizeColumns} caption="Meio  de Divulgação" allowGrouping={true} />
+        <Column dataField="dia" customizeColumns={customizeColumns} caption="Meio de Divulgação" allowGrouping={true} />
         <Column dataField="meta" dataSource={parseFloat(this.props.meta)/6} customizeColumns={customizeColumns} caption="Meta" allowGrouping={true} />
         <Column dataField="duracao" customizeColumns={customizeColumns}  caption="Duração (Dias)" allowGrouping={true} />
         <Column
