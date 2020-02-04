@@ -62,7 +62,7 @@ return {
         <Column dataField="meta" dataSource={parseFloat(this.props.meta)/6} customizeColumns={customizeColumns} caption="Meta" allowGrouping={true} />
         <Column dataField="duracao" customizeColumns={customizeColumns}  caption="Duração (Dias)" allowGrouping={true} />
         <Column
-          dataField="discount"
+          dataField="progressoCampanha"
           caption="Progresso"
           dataType="number"
           format="percent"
