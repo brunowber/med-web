@@ -58,6 +58,7 @@ return {
     super(props);
     this.contentReady = this.contentReady.bind(this);
     this.selectionChanged = this.selectionChanged.bind(this);
+    this.rowClicked = this.rowClicked.bind(this)
   }
   render() {
     return (
@@ -65,8 +66,9 @@ return {
         <DataGrid
           id="grid-container"
           dataSource={dataSource}
-          onSelectionChanged={this.selectionChanged}
           onContentReady={this.contentReady}
+          onSelectionChanged={this.selectionChanged}
+          onRowDblClick={this.rowClicked}
           showBorders={true}
           allowColumnReordering={true}
           customizeColumns={customizeColumns}
@@ -105,9 +107,15 @@ return {
     { e.component.selectRowsByIndexes(0); }
   }
   selectionChanged(e) {
-    e.component.collapseAll(-1);
+  //if(e.component.isRowExpanded(e.component.currentSelectedRowKeys())==true)
+    e.component.collapseAll(-1)
+  // else
     e.component.expandRow(e.currentSelectedRowKeys[0]);
   }
+
+  rowClicked(e){
+    e.component.collapseAll(-1);
+  } 
 }
 
 function renderDetail(props) {

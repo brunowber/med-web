@@ -12,7 +12,7 @@ import Bullet, { Font, Margin, Size, Tooltip, Border } from 'devextreme-react/bu
 import Chart, {
   Export
 } from 'devextreme-react/chart';
-
+import styles from './diasCampanha.css';
 import PrintButton from 'devextreme-react/button';
 import ExportButton from 'devextreme-react/button';
 
@@ -63,6 +63,8 @@ return {
         allowColumnReordering={true}
         customizeColumns={customizeColumns}
         onContentReady={this.onContentReady}
+        printingEnabled='true'
+        shadingColor='black'
       > 
         <Column dataField="dia" customizeColumns={customizeColumns} caption="Dia (útil)" allowGrouping={true} />
         <Column dataField="meta"  customizeColumns={customizeColumns} caption="Meta" allowGrouping={true} />
