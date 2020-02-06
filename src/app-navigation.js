@@ -17,6 +17,10 @@ export const navigation = [
         path: '/campanha'
       },
       {
+        text: 'Fechamento',
+        path: '/Fechamento'
+      },
+      {
         text: 'Display Data',
         path: '/display-data'
       }
