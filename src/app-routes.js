@@ -1,4 +1,4 @@
-import { HomePage, Agenda, Campanha, ConsultaFinanceiro } from './pages';
+import { HomePage, Agenda, Campanha, ConsultaFinanceiro, Fechamento } from './pages';
 
 export default [
   {
@@ -16,6 +16,10 @@ export default [
   {
     path: '/financeiro/consulta',
     component: ConsultaFinanceiro
+  },
+  {
+    path: '/fechamento',
+    component: Fechamento
   },
   {
     path: '/home',

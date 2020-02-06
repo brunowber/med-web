@@ -30,6 +30,10 @@ export const navigation = [
         text: 'Campanha',
         path: '/odontologia/campanha'
       },
+      {
+        text: 'Fechamento',
+        path: '/Fechamento'
+      },
     ]
   }
   ];
