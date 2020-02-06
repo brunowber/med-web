@@ -17,7 +17,7 @@ import {
     AllDayPanel,
     ConfirmationDialog,
 } from '@devexpress/dx-react-scheduler-material-ui';
-import { profissional, appointments } from "../../data";
+import { profissional, appointments } from "../../../data";
 import { messagesAppointmentForm, messagesConfirmationDialog } from "./mensagens"
 
 const TextEditor = (props) => {
@@ -31,7 +31,7 @@ function findArrayElementByTitle(lista, title) {
     .map((name) => {console.log(name); return name})
     console.log(name)
     if (name != null) {
-        return name.text;
+        return name[0].text;
     }
     return "";
 }

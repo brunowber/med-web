@@ -1,17 +1,21 @@
-import { HomePage, DisplayDataPage, Agenda, Campanha } from './pages';
+import { HomePage, Agenda, Campanha, ConsultaFinanceiro } from './pages';
 
 export default [
   {
-    path: '/display-data',
-    component: DisplayDataPage
+    path: '/financeiro/cadastra',
+    // component: Financeiro
   },
   {
-    path: '/agenda',
+    path: '/odontologia/agenda',
     component: Agenda
   },
   {
-    path: '/campanha',
+    path: '/odontologia/campanha',
     component: Campanha
+  },
+  {
+    path: '/financeiro/consulta',
+    component: ConsultaFinanceiro
   },
   {
     path: '/home',

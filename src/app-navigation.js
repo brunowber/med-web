@@ -5,21 +5,31 @@ export const navigation = [
     icon: 'home'
   },
   {
+    text: 'Financeiro',
+    icon: 'money',
+    items: [
+      {
+        text: 'Consulta',
+        path: '/financeiro/consulta'
+      },
+      {
+        text: 'Cadastra',
+        path: '/financeiro/cadastra'
+      }
+    ]
+  },
+  {
     text: 'Odontologia',
     icon: 'folder',
     items: [
       {
         text: 'Agenda',
-        path: '/agenda'
+        path: '/odontologia/agenda'
       },
       {
         text: 'Campanha',
-        path: '/campanha'
+        path: '/odontologia/campanha'
       },
-      {
-        text: 'Display Data',
-        path: '/display-data'
-      }
     ]
   }
   ];

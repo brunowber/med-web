@@ -67,3 +67,39 @@ export const appointments = [
         paciente: "Luan da Silva",
     },
 ]
+
+export const dataFinanceiro = [
+    {
+        Uid: 1,
+        entrada: 2,
+        "valor a pagar/receber": 100,
+        "pago/recebido" : 50,
+        cliente: "Bruno",
+    },
+    {
+        Uid: 4,
+        entrada: 2,
+        "valor a pagar/receber": 70,
+        "pago/recebido" : 70,
+        cliente: "Bruno",
+    },
+    {
+        Uid: 2,
+        entrada: 1,
+        "valor a pagar/receber": 120,
+        "pago/recebido" : 120,
+        Fornecedor: "Bruno LTDA",
+    },
+    {
+        Uid: 3,
+        entrada: 1,
+        "valor a pagar/receber": 250,
+        "pago/recebido" : 0,
+        Fornecedor: "Bruno LTDA",
+    },
+]
+
+export const tiposEntrada = [
+    { name: 'Contas a Pagar', value: 1 },
+    { name: 'Contas a Receber', value: 2 },
+  ];
