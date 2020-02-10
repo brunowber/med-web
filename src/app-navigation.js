@@ -35,5 +35,15 @@ export const navigation = [
         path: '/Fechamento'
       },
     ]
+  },
+  {
+    text: 'Gráficos',
+    icon: 'chart',
+    items: [
+      {
+        text: 'Gráfico de Barra',
+        path: '/barra'
+      }
+    ]
   }
   ];

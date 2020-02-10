@@ -1,4 +1,5 @@
 import { HomePage, Agenda, Campanha, ConsultaFinanceiro, Fechamento } from './pages';
+import { ChartBar } from './components';
 
 export default [
   {
@@ -24,5 +25,9 @@ export default [
   {
     path: '/home',
     component: HomePage
+  },
+  {
+    path: '/barra',
+    component: ChartBar
   }
   ];
