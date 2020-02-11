@@ -1,4 +1,4 @@
-import { HomePage, Agenda, Campanha, ConsultaFinanceiro, Fechamento } from './pages';
+import { HomePage, Agenda, Campanha, ConsultaFinanceiro, Fechamento, Graficos } from './pages';
 import { ChartBar } from './components';
 
 export default [
@@ -28,6 +28,6 @@ export default [
   },
   {
     path: '/barra',
-    component: ChartBar
+    component: Graficos
   }
   ];
