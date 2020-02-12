@@ -1,23 +1,35 @@
 import React from 'react';
 
-import DataSource from 'devextreme/data/data_source';
-import CustomStore from 'devextreme/data/custom_store';
-
 import Chart, {
     ArgumentAxis,
-    ValueAxis,
     Label,
     Legend,
     Series,
     Size,
     Export,
-    LoadingIndicator,
     CommonSeriesSettings,
-    Format,
-    SeriesTemplate, Tooltip
+    Tooltip,
+    Format
 } from 'devextreme-react/chart';
 
-
+const month = [
+    { value: 'jan', name: 'Janeiro' },
+    { value: 'fev', name: 'Fevereiro' },
+    { value: 'mar', name: 'Março' },
+    { value: 'abr', name: 'Abril' },
+    { value: 'mai', name: 'Maio' },
+    { value: 'jun', name: 'Junho' },
+    { value: 'jul', name: 'Julho' },
+    { value: 'ago', name: 'Agosto' },
+    { value: 'set', name: 'Setembro' },
+    { value: 'out', name: 'Outubro' },
+    { value: 'nov', name: 'Novembro' },
+    { value: 'dez', name: 'Dezembro' },
+]
+const year = [
+    { value: '2018', name: '2018' },
+    { value: '2019', name: '2019' },
+]
 
 export default class ChartBar extends React.Component {
     constructor(props) {
@@ -25,10 +37,14 @@ export default class ChartBar extends React.Component {
         this.state = {
             data: props.data,
             argumentField: props.field,
-            type : props.type,
+            type: props.type,
+            anos: props.ano
         };
         console.log(this.state.argumentField)
     }
+
+
+
     render() {
         return (
             <Chart
@@ -40,30 +56,35 @@ export default class ChartBar extends React.Component {
                     height={300}
                     width={600}
                 />
-                {/* <SeriesTemplate
-                    nameField={this.state.argumentField}
-                    customizeSeries={customizeSeries}
-                /> */}
                 <CommonSeriesSettings
                     argumentField={this.state.argumentField}
-                    valueField = "ano"
+                    valueField="total"
                     type={this.state.type}
                     hoverMode="allArgumentPoints"
                     selectionMode="allArgumentPoints"
+                />
+                {
+                    year.map(function (item) {
+                        return <Series key={item.value} valueField={item.value} name={item.name} />;
+                    })
+                }
+                <ArgumentAxis
+                    allowDecimals={false}
+                    axisDivisionFactor={60}
                 >
-                    {/* <Label visible={true}>
-                        <Format type="fixedPoint" precision={0} />
-                    </Label> */}
-                </CommonSeriesSettings>
-                <ArgumentAxis tickInterval={1}>
-                    <Label format="decimal" />
+                    <Label>
+                        <Format type="decimal" />
+                    </Label>
                 </ArgumentAxis>
-                <Series
+                {/* <ArgumentAxis tickInterval={1}>
+                    <Label format="decimal" />
+                </ArgumentAxis> */}
+                {/* <Series
                     valueField="jan"
                     name="Janeiro"
                     type={this.state.type}
-                />
-                <Series
+                /> */}
+                {/* <Series
                     valueField="fev"
                     type={this.state.type}
                     name="Fevereiro"
@@ -73,22 +94,23 @@ export default class ChartBar extends React.Component {
                     type={this.state.type}
                     name="Março"
                 />
-
                 <Series
                     valueField="abr"
                     type={this.state.type}
                     name="Abril"
                 />
-
                 <Series
                     valueField="mai"
                     type={this.state.type}
                     name="Maio"
-                />
+                /> */}
                 <Tooltip enabled={true} />
                 <Legend verticalAlignment="bottom" horizontalAlignment="center"></Legend>
-                <Export enabled={true} />
-
+                <Export
+                    enabled={true}
+                    icon="export"
+                    text="Exportar"
+                />
             </Chart>
         );
     }

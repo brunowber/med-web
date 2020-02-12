@@ -1,56 +1,56 @@
 export const paciente = [
     {
-        text: 'Samantha Bright',
+        text: "Samantha Bright",
         id: 1,
-        color: '#727bd2'
+        color: "#727bd2"
     }, {
-        text: 'John Heart',
+        text: "John Heart",
         id: 2,
-        color: '#32c9ed'
+        color: "#32c9ed"
     }, {
-        text: 'Todd Hoffman',
+        text: "Todd Hoffman",
         id: 3,
-        color: '#2a7ee4'
+        color: "#2a7ee4"
     }, {
-        text: 'Sandra Johnson',
+        text: "Sandra Johnson",
         id: 4,
-        color: '#7b49d3'
+        color: "#7b49d3"
     }
 ];
 
 export const profissional = [
     {
-        text: 'Zé',
+        text: "Zé",
         id: 1,
-        color: '#727bd2'
+        color: "#727bd2"
     }, {
-        text: 'José',
+        text: "José",
         id: 2,
-        color: '#32c9ed'
+        color: "#32c9ed"
     }, {
-        text: 'Bruno',
+        text: "Bruno",
         id: 3,
-        color: '#2a7ee4'
+        color: "#2a7ee4"
     }, {
-        text: 'Weber',
+        text: "Weber",
         id: 4,
-        color: '#7b49d3'
+        color: "#7b49d3"
     }
 ];
 
 export const rooms = [
     {
-        text: 'Room 1',
+        text: "Room 1",
         id: 1,
-        color: '#00af2c'
+        color: "#00af2c"
     }, {
-        text: 'Room 2',
+        text: "Room 2",
         id: 2,
-        color: '#56ca85'
+        color: "#56ca85"
     }, {
-        text: 'Room 3',
+        text: "Room 3",
         id: 3,
-        color: '#8ecd3c'
+        color: "#8ecd3c"
     }
 ];
 
@@ -100,6 +100,6 @@ export const dataFinanceiro = [
 ]
 
 export const tiposEntrada = [
-    { name: 'Contas a Pagar', value: 1 },
-    { name: 'Contas a Receber', value: 2 },
+    { name: "Contas a Pagar", value: 1 },
+    { name: "Contas a Receber", value: 2 },
   ];
