@@ -1,8 +1,29 @@
 import React from 'react';
 import './home.scss';
+import './home.css';
+import Grafico from './../estatisticas/graficos'
 
 export default () => (
   <React.Fragment>
+    <div className="dashboard">
+        <div className="linha">
+          <div className="celula">
+            <Grafico default="Bar" searchVisible='False'/>
+          </div>
+          <div className="celula">
+            <Grafico default="line" searchVisible='True'/>
+          </div>
+        </div>
+        <div className="linha">
+          <div className="celula">
+            <Grafico default="spline" searchVisible='False'/>
+          </div>
+          <div className="celula">
+            <Grafico default="Bar" searchVisible='False'/>
+          </div>
+        </div>
+    </div>
+    {/*
     <h2 className={'content-block'}>Home</h2>
     <div className={'content-block'}>
       <div className={'dx-card responsive-paddings'}>
@@ -39,6 +60,6 @@ export default () => (
 
         <p>Please, read README in <a href={'https://github.com/DevExpress/devextreme-react-template/blob/master/README.md'}>devextreme-react-template</a> GitHub repository for more information.</p>
       </div>
-    </div>
+  </div>*/}
   </React.Fragment>
 );

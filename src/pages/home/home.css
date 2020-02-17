@@ -1,0 +1,20 @@
+Grafico{
+    padding: 10px;
+    max-width: 300px;
+    background-origin: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.celula{
+    background-origin: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.dashboard{
+    margin: auto;
+    max-width: 700px;
+}
+
+.linha{
+    display: flex;
+    margin-top: 40px;
+    justify-content: space-around;
+}
