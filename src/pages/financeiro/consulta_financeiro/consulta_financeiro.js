@@ -13,19 +13,17 @@ import { locale } from "devextreme/localization";
 import config from "devextreme/core/config";
 import "./consulta_financeiro.scss"
 
-
 const renderGridCell = (data) => {
   console.log(data)
   return <div style={{ color: 'blue' }}>sadas</div>;
 }
 
-const onRowPrepared = function (info) { 
-  console.log(info) 
-  if (info.rowType === "data" && info.data.entrada === 1)  
-  {
-       info.rowElement.className +=" conta-pagar";  
+const onRowPrepared = function (info) {
+  console.log(info)
+  if (info.rowType === "data" && info.data.entrada === 1) {
+    info.rowElement.className += " conta-pagar";
   }
-  else if (info.rowType === "data" && info.data.entrada === 2)  {
+  else if (info.rowType === "data" && info.data.entrada === 2) {
     info.rowElement.className += " conta-receber"
   }
 
@@ -41,19 +39,18 @@ export default class ConsultaFinanceiro extends React.Component {
   calculateCustomSummary(options) {
     var receber = 0;
     dataFinanceiro.map((valor) => {
-      if (valor.entrada === 2)
-      {
+      if (valor.entrada === 2) {
         receber += valor["valor a pagar/receber"];
       }
     })
     options.totalValue = receber;
   }
-
+  
   render() {
     return (
       <React.Fragment >
-        <h2 style={{display: 'flex', justifyContent: 'center'}} className={'content-block'}>Consulta Financeiro</h2>
-        <DataGrid  style={{display: 'flex', justifyContent: 'center'}}
+        <h2 style={{ display: 'flex', justifyContent: 'center' }} className={'content-block'}>Consulta Financeiro</h2>
+        <DataGrid style={{ display: 'flex', justifyContent: 'center' }}
           className={'dx-card wide-card'}
           dataSource={dataFinanceiro}
           showBorders={true}
@@ -62,7 +59,7 @@ export default class ConsultaFinanceiro extends React.Component {
           defaultFocusedRowIndex={0}
           columnAutoWidth={true}
           columnHidingEnabled={true}
-          onRowPrepared = {onRowPrepared}
+          onRowPrepared={onRowPrepared}
         >
           <Paging defaultPageSize={10} />
           <Pager showPageSizeSelector={true} showInfo={true} />
@@ -98,16 +95,16 @@ export default class ConsultaFinanceiro extends React.Component {
           <Summary calculateCustomSummary={this.calculateCustomSummary}>
             <TotalItem
               column="Uid"
-              summaryType="count" 
-              />
+              summaryType="count"
+            />
             <TotalItem
               name="valor a pagar/receber"
               summaryType="custom"
               valueFormat="currency"
               displayFormat={'Valor a receber é de: {0}'}
-              showInColumn="valor a pagar/receber" 
+              showInColumn="valor a pagar/receber"
               key="a"
-              />
+            />
           </Summary>
         </DataGrid>
       </React.Fragment >

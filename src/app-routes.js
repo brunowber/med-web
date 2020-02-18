@@ -1,5 +1,4 @@
 import { HomePage, Agenda, Campanha, ConsultaFinanceiro, Fechamento, Graficos } from './pages';
-import { ChartBar } from './components';
 
 export default [
   {

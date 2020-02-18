@@ -1,0 +1,23 @@
+.form {
+    padding: 20% 0;
+    text-align: center;
+}
+.dx-trackbar-container{
+    height: 8px;
+}
+
+.dx-progressbar-status{
+    color: black; 
+}
+
+#progress-bar-status {
+    display: inline-block;
+}
+
+.complete .dx-progressbar-range {
+    background-color: green;
+}
+
+.incomplete .dx-progressbar-range {
+    background-color: red;
+}
