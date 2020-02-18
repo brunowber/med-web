@@ -4,6 +4,7 @@ import { locale } from "devextreme/localization";
 import config from "devextreme/core/config";
 import { SelectBox } from 'devextreme-react';
 import { ChartBar } from '../../components';
+
 import Box, {
     Item
 } from 'devextreme-react/box';
@@ -151,6 +152,7 @@ const data_mes = [
 export default class Graficos extends React.Component {
     constructor(props) {
         super(props);
+        
         this.state = {
             grafico: null,
             component: null
@@ -158,7 +160,16 @@ export default class Graficos extends React.Component {
         locale(navigator.language);
         config({ defaultCurrency: 'BRL' });
         this.onGraficoChanged = this.onGraficoChanged.bind(this);
+        this.onInitialized = this.onInitialized.bind(this);
+        this.default = props.default;
+        this.searchVisible = props.searchVisible;
     }
+
+    onInitialized(e) {
+            this.setState({
+                component: <ChartBar key={1} data={data_mes} type={this.default} field="mes" />
+            });
+    }   
 
     onGraficoChanged(e) {
         this.setState({
@@ -177,18 +188,23 @@ export default class Graficos extends React.Component {
             <React.Fragment>
                 <Box
                     direction="row"
-                    width="20%"
+                    width="10%"
                     height={75}>
-                    <Item ratio={1}>
+                    <Item ratio={1} visible='False' >
+                        
                         <SelectBox
-                            displayExpr="name"
                             dataSource={graficos}
+                            displayExpr="name"
                             value={this.state.grafico}
                             onValueChanged={this.onGraficoChanged}
+                            onInitialized={this.onInitialized}
                             showClearButton={true}
+                            visible={this.state.searchVisible}
+                            
                             searchEnabled = {true} 
                             placeholder = "Selecionar"
                         />
+                    {console.log(this.state.searchVisible)}
                     </Item>
                 </Box>
                 {this.state.component}
