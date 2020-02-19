@@ -40,9 +40,7 @@ export default class ChartBar extends React.Component {
             type: props.type,
             anos: props.ano
         };
-        console.log(this.state.argumentField)
     }
-
 
 
     render() {
@@ -76,34 +74,6 @@ export default class ChartBar extends React.Component {
                         <Format type="decimal" />
                     </Label>
                 </ArgumentAxis>
-                {/* <ArgumentAxis tickInterval={1}>
-                    <Label format="decimal" />
-                </ArgumentAxis> */}
-                {/* <Series
-                    valueField="jan"
-                    name="Janeiro"
-                    type={this.state.type}
-                /> */}
-                {/* <Series
-                    valueField="fev"
-                    type={this.state.type}
-                    name="Fevereiro"
-                />
-                <Series
-                    valueField="mar"
-                    type={this.state.type}
-                    name="Março"
-                />
-                <Series
-                    valueField="abr"
-                    type={this.state.type}
-                    name="Abril"
-                />
-                <Series
-                    valueField="mai"
-                    type={this.state.type}
-                    name="Maio"
-                /> */}
                 <Tooltip enabled={true} />
                 <Legend verticalAlignment="bottom" horizontalAlignment="center"></Legend>
                 <Export

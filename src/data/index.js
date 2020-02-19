@@ -1,1 +1,1 @@
-export { paciente, profissional, rooms, appointments, dataFinanceiro, tiposEntrada } from "./data"
+export { paciente, profissional, rooms, appointments, dataFinanceiro, tiposEntrada, dataGrafico } from "./data"
