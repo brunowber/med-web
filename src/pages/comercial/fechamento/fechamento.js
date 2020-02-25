@@ -35,7 +35,7 @@ class Fechamento extends React.Component {
           <Column dataField="Employee" caption="Profissional Executante" />
           <Column dataField="CustomerStoreCity" caption="Consultório" />
           <Column dataField="CustomerStoreState" caption="Observação" />
-          <Column dataField="SaleAmount" alignment="right" caption="Valor" format="currency" style="#fff" editorOptions={{ format: 'currency' }} />
+          <Column dataField="SaleAmount" alignment="right" caption="Valor" format="currency" editorOptions={{ format: 'currency' }} />
           <Summary recalculateWhileEditing={true}>
             <TotalItem
               column="OrderNumber"

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import 'devextreme/data/odata/store';
 import DataGrid, {
   Column,
@@ -12,11 +12,6 @@ import { dataFinanceiro, tiposEntrada } from '../../../data'
 import { locale } from "devextreme/localization";
 import config from "devextreme/core/config";
 import "./consulta_financeiro.scss"
-
-const renderGridCell = (data) => {
-  console.log(data)
-  return <div style={{ color: 'blue' }}>sadas</div>;
-}
 
 const onRowPrepared = function (info) {
   console.log(info)
@@ -42,10 +37,11 @@ export default class ConsultaFinanceiro extends React.Component {
       if (valor.entrada === 2) {
         receber += valor["valor a pagar/receber"];
       }
+      return receber;
     })
     options.totalValue = receber;
   }
-  
+
   render() {
     return (
       <React.Fragment >
@@ -66,11 +62,13 @@ export default class ConsultaFinanceiro extends React.Component {
           <FilterRow visible={true} />
 
           <Column dataField={'Uid'} width={90} hidingPriority={2} />
-          <Column dataField={'entrada'} width={200}><Lookup
-            dataSource={tiposEntrada}
-            valueExpr={'value'}
-            displayExpr={'name'}
-          />
+          <Column dataField={'entrada'} width={200}>
+            <Lookup
+              dataSource={tiposEntrada}
+              valueExpr={'value'}
+              displayExpr={'name'}
+              
+            />
           </Column>
           <Column dataField={'cliente'} width="auto" />
           <Column dataField={'Fornecedor'} width="auto" />

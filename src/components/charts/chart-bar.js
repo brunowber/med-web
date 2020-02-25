@@ -12,20 +12,6 @@ import Chart, {
     Format
 } from 'devextreme-react/chart';
 
-const month = [
-    { value: 'jan', name: 'Janeiro' },
-    { value: 'fev', name: 'Fevereiro' },
-    { value: 'mar', name: 'Março' },
-    { value: 'abr', name: 'Abril' },
-    { value: 'mai', name: 'Maio' },
-    { value: 'jun', name: 'Junho' },
-    { value: 'jul', name: 'Julho' },
-    { value: 'ago', name: 'Agosto' },
-    { value: 'set', name: 'Setembro' },
-    { value: 'out', name: 'Outubro' },
-    { value: 'nov', name: 'Novembro' },
-    { value: 'dez', name: 'Dezembro' },
-]
 const year = [
     { value: '2018', name: '2018' },
     { value: '2019', name: '2019' },
@@ -52,7 +38,7 @@ export default class ChartBar extends React.Component {
             >
                 <Size
                     height={300}
-                    width={600}
+                    width={500}
                 />
                 <CommonSeriesSettings
                     argumentField={this.state.argumentField}

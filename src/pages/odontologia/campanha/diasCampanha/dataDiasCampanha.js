@@ -1,6 +1,3 @@
-import React from 'react';
-
-let s = 123456789;
 function random() {
   return Math.floor(Math.random() * 6);
 }
@@ -25,8 +22,6 @@ export function generateData(count) {
       random() *
                 (endBirthDate - startBirthDate) / 10));
     birthDate.setHours(12);
-
-    var nameIndex = random();
     var qtDias = 6;
     var item = {
       id: i + 1,

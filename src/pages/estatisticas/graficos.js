@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import 'devextreme/data/odata/store';
 import { locale } from "devextreme/localization";
 import config from "devextreme/core/config";

@@ -3,18 +3,12 @@ import React from 'react';
 import { ProgressBar } from 'devextreme-react/progress-bar';
 import "./notifications.scss"
 
-function formatTime(value) {
-    return `00:00:${(`0${value}`).slice(-2)}`;
-}
-
 function statusFormat(value) {
     console.log(value)
     let percentage = value * 100
     percentage = percentage.toFixed(2)
     return `${percentage}%`;
 }
-
-let intervalId;
 
 export default class ProgressBarComponent extends React.Component {
     constructor(props) {
@@ -35,7 +29,7 @@ export default class ProgressBarComponent extends React.Component {
                 </div>
                 <ProgressBar
                     id="progress-bar-status"
-                    className={this.state.actualValue == this.state.maxValue ? 'complete' : 'incomplete'}
+                    className={this.state.actualValue === this.state.maxValue ? 'complete' : 'incomplete'}
                     width="20%"
                     min={0}
                     max={this.state.maxValue}
@@ -47,8 +41,8 @@ export default class ProgressBarComponent extends React.Component {
     }
 }
 
-{/* <ProgressBarComponent
+/* <ProgressBarComponent
       maxValue={19}
       actualValue={19}
       text="Valores restantes: "
-    /> */}
+    /> */

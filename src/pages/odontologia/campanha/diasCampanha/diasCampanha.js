@@ -7,14 +7,9 @@ import DataGrid, {
   Column} from 'devextreme-react/data-grid';
 import { generateData } from './dataDiasCampanha.js';
 
-import Bullet, { Font, Margin, Size, Tooltip, Border } from 'devextreme-react/bullet';
+import Bullet, { Font, Margin, Size, Tooltip } from 'devextreme-react/bullet';
 
-import Chart, {
-  Export
-} from 'devextreme-react/chart';
-import styles from './diasCampanha.css';
-import PrintButton from 'devextreme-react/button';
-import ExportButton from 'devextreme-react/button';
+import { Export } from 'devextreme-react/chart';
 
 let dataSource = generateData(6);
 

@@ -1,4 +1,3 @@
-let s = 123456789;
 function random() {
   return Math.floor(Math.random() * 6);
 }

@@ -80,7 +80,8 @@ export default class GalleryComponent extends React.Component {
         });
     }
 }
-{/* <GalleryComponent
+
+/* <GalleryComponent
       data={fotos}
       width={400}
       slideShow={false}
@@ -88,4 +89,4 @@ export default class GalleryComponent extends React.Component {
       showIndicator={true}
       showNavButtons={true}
       options={false}
-    /> */}
+    /> */

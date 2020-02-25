@@ -53,11 +53,11 @@ class App extends Component {
 
     this.userMenuItems = [
       {
-        text: 'Profile',
+        text: 'Perfil',
         icon: 'user'
       },
       {
-        text: 'Logout',
+        text: 'Sair',
         icon: 'runner',
         onClick: this.logOut
       }

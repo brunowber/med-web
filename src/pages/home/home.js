@@ -1,29 +1,24 @@
 import React from 'react';
 import './home.scss';
-import './home.css';
-import Grafico from './../estatisticas/graficos'
 import { ChartBar } from '../../components';
 import { dataGrafico } from '../../data';
+import { Grid } from '@material-ui/core';
 
 export default () => (
   <React.Fragment>
-    <div className="dashboard">
-      <div className="linha">
-        <div className="celula">
-          <ChartBar type="bar" data={dataGrafico} field="mes" />
-        </div>
-        <div className="celula">
-          <ChartBar type="line" data={dataGrafico} field="mes" />
-        </div>
-      </div>
-      <div className="linha">
-        <div className="celula">
-          <ChartBar type="spline" data={dataGrafico} field="mes" />
-        </div>
-        <div className="celula">
-          <ChartBar type="fullstackedbar" data={dataGrafico} field="mes" />
-        </div>
-      </div>
-    </div>
+    <Grid container spacing={1}>
+      <Grid item xs={12} md={6}>
+        <ChartBar type="bar" data={dataGrafico} field="mes" />
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <ChartBar type="line" data={dataGrafico} field="mes" />
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <ChartBar type="spline" data={dataGrafico} field="mes" />
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <ChartBar type="fullstackedbar" data={dataGrafico} field="mes" />
+      </Grid>
+    </Grid>
   </React.Fragment>
 );
