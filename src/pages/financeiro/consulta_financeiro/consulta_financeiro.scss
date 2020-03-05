@@ -1,6 +1,14 @@
-.conta-pagar{
-    background-color: #FF3939 !important;
+.conta-pagar {
+  background-color: #ff3939 !important;
 }
-.conta-receber{
-    background-color: #00FF0F !important;
+.conta-receber {
+  background-color: #00ff0f !important;
+}
+
+#gridContainer {
+  padding: 10px;
+  display: "flex";
+  justify-content: "center";
+  margin-left: 20px;
+  height: 700px;
 }

@@ -97,6 +97,41 @@ export const dataFinanceiro = [
         "pago/recebido" : 0,
         Fornecedor: "Bruno LTDA",
     },
+    {
+        Uid: 3,
+        entrada: 1,
+        "valor a pagar/receber": 250,
+        "pago/recebido" : 0,
+        Fornecedor: "Bruno LTDA",
+    },
+    {
+        Uid: 3,
+        entrada: 1,
+        "valor a pagar/receber": 250,
+        "pago/recebido" : 0,
+        Fornecedor: "Bruno LTDA",
+    },
+    {
+        Uid: 3,
+        entrada: 1,
+        "valor a pagar/receber": 250,
+        "pago/recebido" : 0,
+        Fornecedor: "Bruno LTDA",
+    },
+    {
+        Uid: 3,
+        entrada: 1,
+        "valor a pagar/receber": 250,
+        "pago/recebido" : 0,
+        Fornecedor: "Bruno LTDA",
+    },
+    {
+        Uid: 3,
+        entrada: 1,
+        "valor a pagar/receber": 250,
+        "pago/recebido" : 0,
+        Fornecedor: "Bruno LTDA",
+    },
 ]
 
 export const tiposEntrada = [

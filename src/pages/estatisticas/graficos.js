@@ -62,7 +62,7 @@ export default class Graficos extends React.Component {
             <React.Fragment>
                 <Box
                     direction="row"
-                    width="15%"
+                    width="30%"
                     height={75}>
                     <Item ratio={1} >
 

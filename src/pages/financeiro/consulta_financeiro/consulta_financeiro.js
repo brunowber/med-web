@@ -6,7 +6,7 @@ import DataGrid, {
   Paging,
   FilterRow,
   Lookup,
-  Summary, TotalItem,
+  Summary, TotalItem, ColumnChooser, Export
 } from 'devextreme-react/data-grid';
 import { dataFinanceiro, tiposEntrada } from '../../../data'
 import { locale } from "devextreme/localization";
@@ -44,37 +44,41 @@ export default class ConsultaFinanceiro extends React.Component {
 
   render() {
     return (
-      <React.Fragment >
+      <div>
         <h2 style={{ display: 'flex', justifyContent: 'center' }} className={'content-block'}>Consulta Financeiro</h2>
-        <DataGrid style={{ display: 'flex', justifyContent: 'center' }}
+        <DataGrid
+          id="gridContainer"
           className={'dx-card wide-card'}
           dataSource={dataFinanceiro}
           showBorders={true}
           showColumnLines={true}
           allowColumnResizing={true}
-          defaultFocusedRowIndex={0}
-          columnAutoWidth={true}
-          columnHidingEnabled={true}
           onRowPrepared={onRowPrepared}
         >
+          <Export enabled={true} fileName="financeiro" />
+          <Pager
+            allowedPageSizes={[5, 10, 15, 30]}
+            showInfo={true}
+            showNavigationButtons={true}
+            showPageSizeSelector={true}
+            visible={true} />
           <Paging defaultPageSize={10} />
-          <Pager showPageSizeSelector={true} showInfo={true} />
           <FilterRow visible={true} />
+          <ColumnChooser enabled={true} mode="select" />
 
-          <Column dataField={'Uid'} width={90} hidingPriority={2} />
+          <Column dataField={'Uid'} width={90} />
           <Column dataField={'entrada'} width={200}>
             <Lookup
               dataSource={tiposEntrada}
               valueExpr={'value'}
               displayExpr={'name'}
-              
             />
           </Column>
           <Column dataField={'cliente'} width="auto" />
           <Column dataField={'Fornecedor'} width="auto" />
           <Column
             dataField={"valor a pagar/receber"}
-            width="auto"
+            width={200}
             caption="Valor a Pagar/Receber"
             dataType="number"
             format="currency"
@@ -83,7 +87,7 @@ export default class ConsultaFinanceiro extends React.Component {
 
           <Column
             dataField={'pago/recebido'}
-            width="auto"
+            width={200}
             caption="Valor Pago/Recebido"
             dataType="number"
             format="currency"
@@ -105,7 +109,7 @@ export default class ConsultaFinanceiro extends React.Component {
             />
           </Summary>
         </DataGrid>
-      </React.Fragment >
+      </div>
     );
   }
 };

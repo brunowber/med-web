@@ -12,6 +12,8 @@ import Chart, {
     Format
 } from 'devextreme-react/chart';
 
+import './chart-bar.scss'
+
 const year = [
     { value: '2018', name: '2018' },
     { value: '2019', name: '2019' },
@@ -24,21 +26,41 @@ export default class ChartBar extends React.Component {
             data: props.data,
             argumentField: props.field,
             type: props.type,
-            anos: props.ano
+            anos: props.ano,
+            width: window.width > 500 ? 500 : 400
         };
+    }
+
+    componentDidMount() {
+        window.addEventListener("resize", this.resize.bind(this));
+        this.resize();
+    }
+    
+    resize() {
+        if (window.innerWidth > 500) {
+            this.setState({width: 500});
+        }
+        else if (window.innerWidth <= 500 && window.innerWidth > 400) {
+            this.setState({width: 400});
+        }
+        else if (window.innerWidth <= 400) {
+            this.setState({width: 350});
+        }
+        console.log(this.state.width)
     }
 
 
     render() {
         return (
             <Chart
+                className="box"
                 title="Total de exames"
                 dataSource={this.state.data}
                 id="chart"
             >
                 <Size
                     height={300}
-                    width={500}
+                    width={this.state.width}
                 />
                 <CommonSeriesSettings
                     argumentField={this.state.argumentField}

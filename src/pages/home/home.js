@@ -1,38 +1,38 @@
 import React from 'react';
 import './home.scss';
-import { ChartBar } from '../../components';
+import { ChartBar, TextEditor } from '../../components';
 import { dataGrafico } from '../../data';
 import { Grid } from '@material-ui/core';
 import Draggable from 'react-draggable';
 
 export default () => (
   <React.Fragment>
-    <Grid spacing={6}>
+    <TextEditor />
+    {/* <Grid justify="center" className="root" container spacing={1}>
+    <Grid item xs={12}></Grid>
+        <Draggable bounds="parent">
+          <Grid className="cursor" item xs={12} md={5}>
+            <ChartBar type="bar" data={dataGrafico} field="mes" />
+          </Grid>
+        </Draggable>
+        <Draggable bounds="parent">
+          <Grid className="cursor" item xs={12} md={5}>
+            <ChartBar type="line" data={dataGrafico} field="mes" />
+          </Grid>
+        </Draggable>
 
-      <Draggable bounds="body">
-        <Grid className="box cursor" item xs={12} md={6}>
-          <ChartBar type="bar" data={dataGrafico} field="mes" />
-        </Grid>
-      </Draggable>
+        <Draggable bounds="parent">
+          <Grid className="cursor" item xs={12} md={5}>
+            <ChartBar type="spline" data={dataGrafico} field="mes" />
+          </Grid>
+        </Draggable>
 
-      <Draggable bounds="body">
-        <Grid className="box cursor" item xs={12} md={6}>
-          <ChartBar type="line" data={dataGrafico} field="mes" />
-        </Grid>
-      </Draggable>
+        <Draggable bounds="parent">
+          <Grid className="cursor" item xs={12} md={5}>
+            <ChartBar type="fullstackedbar" data={dataGrafico} field="mes" />
+          </Grid>
 
-      <Draggable bounds="body">
-        <Grid className="box cursor" item xs={12} md={6}>
-          <ChartBar type="spline" data={dataGrafico} field="mes" />
-        </Grid>
-      </Draggable>
-
-      <Draggable bounds="body">
-        <Grid className="box cursor" item xs={12} md={6}>
-          <ChartBar type="fullstackedbar" data={dataGrafico} field="mes" />
-        </Grid>
-      </Draggable>
-
-    </Grid>
+        </Draggable>
+    </Grid> */}
   </React.Fragment>
 );
