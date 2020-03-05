@@ -7,8 +7,7 @@ import Draggable from 'react-draggable';
 
 export default () => (
   <React.Fragment>
-    <TextEditor />
-    {/* <Grid justify="center" className="root" container spacing={1}>
+    <Grid justify="center" className="root" container spacing={1}>
     <Grid item xs={12}></Grid>
         <Draggable bounds="parent">
           <Grid className="cursor" item xs={12} md={5}>
@@ -33,6 +32,6 @@ export default () => (
           </Grid>
 
         </Draggable>
-    </Grid> */}
+    </Grid>
   </React.Fragment>
 );
